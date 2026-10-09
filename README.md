@@ -138,6 +138,8 @@ flowchart LR
 **[`Notification.tsx`](src/notifications/Notification.tsx)**
 **[`NotificationSlice.tsx`](src/notifications/NotificationSlice.tsx)**
 
+<br>
+
 ### 2. 실제 업무를 반영하지 못한 결재 구조를 전면 재설계
 
 **문제 발생**
@@ -154,13 +156,15 @@ flowchart LR
 
 실제 결재 프로세스를 반영한 시스템으로 시연에서 긍정적인 평가를 받았습니다.
 
+<br>
+
 ### 3. 토큰을 재발급받아도 만료된 토큰으로 요청하던 문제
 
-**문제**
+**문제 발생**
 
 refreshToken으로 토큰을 재발급받은 뒤에도 API 요청이 계속 인증에 실패했습니다. 각 컴포넌트가 렌더링할 때 읽어 둔 토큰 변수를 계속 쓰고 있었던 것이 원인이었습니다.
 
-**해결**
+**해결 과정**
 
 - 페이지, 모달, 상단바 등 7개의 파일에서 요청을 보낼 때마다 최신 토큰을 읽도록 변경
 - 재발급 응답에 비어 있는 사용자 정보가 기존 값을 덮어쓰지 않도록 방어
